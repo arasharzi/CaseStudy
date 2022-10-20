@@ -11,7 +11,7 @@ public class PolicyHolder
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int policyholder_id;
 
-    @OneToMany(mappedBy = "policyHolder")
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Vehicle> vehicles;
 
     private String firstName;
@@ -22,6 +22,10 @@ public class PolicyHolder
     private String phoneNumber;
 
 
+    public PolicyHolder()
+    {
+
+    }
     public PolicyHolder(List<Vehicle> vehicles, String firstName, String lastName, String address, int zipcode, String state, String phoneNumber)
     {
         this.vehicles = vehicles;
