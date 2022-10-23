@@ -18,23 +18,27 @@ public class PolicyHolder
     private String lastName;
     private String address;
     private int zipcode;
+    private String city;
     private String state;
     private String phoneNumber;
+    private String email;
 
 
     public PolicyHolder()
     {
 
     }
-    public PolicyHolder(List<Vehicle> vehicles, String firstName, String lastName, String address, int zipcode, String state, String phoneNumber)
+    public PolicyHolder(List<Vehicle> vehicles, String firstName, String lastName, String address, int zipcode, String city, String state, String phoneNumber, String email)
     {
         this.vehicles = vehicles;
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
         this.zipcode = zipcode;
+        this.city = city;
         this.state = state;
         this.phoneNumber = phoneNumber;
+        this.email = email;
     }
 
     public int getPolicyholder_id()
@@ -92,6 +96,15 @@ public class PolicyHolder
         this.zipcode = zipcode;
     }
 
+    public String getCity()
+    {
+        return city;
+    }
+    public void setCity(String city)
+    {
+        this.city = city;
+    }
+
     public String getState()
     {
         return state;
@@ -110,6 +123,15 @@ public class PolicyHolder
         this.phoneNumber = phoneNumber;
     }
 
+    public String getEmail()
+    {
+        return email;
+    }
+    public void setEmail(String email)
+    {
+        this.email = email;
+    }
+
     @Override
     public String toString() {
         return "PolicyHolder{" +
@@ -118,9 +140,11 @@ public class PolicyHolder
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", address='" + address + '\'' +
-                ", zipcode=" + zipcode +
+                ", zipcode=" + zipcode + '\'' +
+                ", city='" + city + '\'' +
                 ", state='" + state + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
+                ", email='" + email + '\'' +
                 '}';
     }
 }
