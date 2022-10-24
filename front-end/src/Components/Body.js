@@ -33,13 +33,13 @@ function Body()
     const [model, setModel] = useState()
     const [year, setYear] = useState()    
 
-  
+
     useEffect(()=>
     {
         PolicyService.getPolicyHolders()
             .then((Response) => setPolicyHolders(Response.data)) 
     }, [])
-    
+
     function updateVehicles()
     {
         policyHolder.vehicles = vehicles
@@ -90,6 +90,7 @@ function Body()
         }
 
         PolicyService.updatePolicyHolder(policyHolder, vehicles)
+        policyHolders[policyHolders.indexOf(policyHolder)].vehicles = vehicles
     } 
 
     function deleteVehicle(vehicle_id)
@@ -326,10 +327,7 @@ function Body()
                                         setDisabled(true)
                                         toggleShow()
                                         setPolicyHolder(policyHolders)
-                                        if (vehicles.length == 0)
-                                        {
-                                            setVehicles(policyHolders.vehicles)
-                                        }
+                                        setVehicles(policyHolders.vehicles)
                                     }}>
                                 View
                                 </MDBBtn>
@@ -338,11 +336,7 @@ function Body()
                                         setDisabled(false)
                                         toggleShow()
                                         setPolicyHolder(policyHolders)
-                                        if (vehicles.length == 0)
-                                        {
-                                            setVehicles(policyHolders.vehicles)
-                                        }
-                                        
+                                        setVehicles(policyHolders.vehicles)                                       
                                     }}>
                                 Edit
                                 </MDBBtn>
