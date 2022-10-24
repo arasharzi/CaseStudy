@@ -1,6 +1,8 @@
 package com.example.casestudy.services;
 
 import com.example.casestudy.entities.PolicyHolder;
+import com.example.casestudy.entities.Vehicle;
+
 import java.util.List;
 
 public interface IPolicyHolderService
@@ -10,6 +12,11 @@ public interface IPolicyHolderService
     PolicyHolder addPolicyHolder(PolicyHolder policyHolder);
     PolicyHolder updatePolicyHolder(PolicyHolder policyHolder);
     String deletePolicyHolderById(int id);
+    String deleteVehicleById(int policy_id, int vehicle_id);
+
+
+
+
 
     // TODO: add more?
     // add vehicles?

@@ -11,7 +11,7 @@ public class PolicyHolder
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int policyholder_id;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
     private List<Vehicle> vehicles;
 
     private String firstName;

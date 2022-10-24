@@ -13,6 +13,7 @@ function Body()
     {
         setStaticModal(!staticModal)
     }
+
     const [policyHolders, setPolicyHolders] = useState([])
     const [policyHolder, setPolicyHolder] = useState([])
     const [vehicles, setVehicles] = useState([])
@@ -30,8 +31,9 @@ function Body()
     const [policyNumber, setPolicyNumber] = useState()
     const [make, setMake] = useState()
     const [model, setModel] = useState()
-    const [year, setYear] = useState()
+    const [year, setYear] = useState()    
 
+  
     useEffect(()=>
     {
         PolicyService.getPolicyHolders()
@@ -64,8 +66,8 @@ function Body()
         if (email != null)
         {
             policyHolder.email = email
+            setEmail('')
         }
-
         if (address != null)
         {
             policyHolder.address = address
@@ -89,6 +91,13 @@ function Body()
 
         PolicyService.updatePolicyHolder(policyHolder, vehicles)
     } 
+
+    function deleteVehicle(vehicle_id)
+    {
+        PolicyService.deleteVehicleById(policyHolder, vehicle_id)
+        var index = vehicles.findIndex(v => {return v.vehicle_id === vehicle_id})
+        setVehicles(vehicles.filter((_, i) => i !== index))
+    }
 
     return (
         <div>
@@ -160,9 +169,7 @@ function Body()
                                                         Email
                                                     </div>
                                         </MDBCol>
-                                    </MDBRow>
-                                            
-
+                                    </MDBRow>                                
 
                                     <hr />
                                     <div>Vehicles</div>
@@ -196,6 +203,15 @@ function Body()
                                                 </td>
                                                 <td>
                                                     <p className='fw-normal mb-1'>{vehicles.claims.id}</p>   
+                                                </td>
+                                                <td>
+                                                    <MDBBtn size='sm' color='danger' rounded className='mx-2' disabled={disabled} onClick={()=>
+                                                        {
+                                                            deleteVehicle(vehicles.vehicle_id)  
+                                                            updateVehicles()                                                
+                                                        }}> {/* colors= success=green, primary=blue, warning=yellow danger=red */}
+                                                        Delete
+                                                    </MDBBtn>
                                                 </td>
                                             </tr>
                                         )
@@ -310,7 +326,10 @@ function Body()
                                         setDisabled(true)
                                         toggleShow()
                                         setPolicyHolder(policyHolders)
-                                        setVehicles(policyHolders.vehicles)
+                                        if (vehicles.length == 0)
+                                        {
+                                            setVehicles(policyHolders.vehicles)
+                                        }
                                     }}>
                                 View
                                 </MDBBtn>
@@ -319,7 +338,11 @@ function Body()
                                         setDisabled(false)
                                         toggleShow()
                                         setPolicyHolder(policyHolders)
-                                        setVehicles(policyHolders.vehicles)
+                                        if (vehicles.length == 0)
+                                        {
+                                            setVehicles(policyHolders.vehicles)
+                                        }
+                                        
                                     }}>
                                 Edit
                                 </MDBBtn>

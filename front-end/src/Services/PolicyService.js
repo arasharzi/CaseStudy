@@ -40,6 +40,12 @@ class PolicyService
     {
         
     }
+
+    deleteVehicleById(policyHolder, vehicle_id)
+    {
+        return axios.delete(POLICY_REST_API_URL + policyHolder.policyholder_id + '/' + vehicle_id)
+    }
+
 }
 
 export default new PolicyService();

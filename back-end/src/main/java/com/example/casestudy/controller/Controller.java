@@ -56,7 +56,13 @@ public class Controller
     {
         return this.policyHolder.deletePolicyHolderById(Integer.parseInt(id));
     }
+
     // TODO: delete vehicle info for policy holder
+    @DeleteMapping("policy-holders/{id}/{vehicle_id}")
+    public String deleteVehicle(@PathVariable String id, @PathVariable String vehicle_id)
+    {
+        return this.policyHolder.deleteVehicleById(Integer.parseInt(id), Integer.parseInt(vehicle_id));
+    }
 
 
     // Mapping for file handling
