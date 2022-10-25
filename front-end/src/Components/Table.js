@@ -6,7 +6,7 @@ import { MDBRow } from 'mdb-react-ui-kit'
 import { MDBCol } from 'mdb-react-ui-kit'
 
 
-function Body()
+function Table()
 {
     const [staticModal, setStaticModal] = useState(false)
     const toggleShow = () => 
@@ -205,7 +205,7 @@ function Body()
                                                 <td>
                                                     <p className='fw-normal mb-1'>{vehicles.claims.id}</p>   
                                                 </td>
-                                                <td>
+                                                <td hidden={disabled}>
                                                     <MDBBtn size='sm' color='danger' rounded className='mx-2' disabled={disabled} onClick={()=>
                                                         {
                                                             deleteVehicle(vehicles.vehicle_id)  
@@ -265,7 +265,7 @@ function Body()
                                 <MDBBtn color='secondary' onClick={toggleShow}>
                                     Close
                                 </MDBBtn>
-                                <MDBBtn disabled={disabled} onClick={updatePolicyholder}>
+                                <MDBBtn hidden={disabled} disabled={disabled} onClick={updatePolicyholder}>
                                     Save
                                 </MDBBtn>
                             </MDBModalFooter>
@@ -275,10 +275,9 @@ function Body()
 
             {/* Body */}
             <div className='policy-information-container justify-content-center'>
-                <MDBInputGroup className='mb-3 justify-content-center' noBorder textBefore={<MDBIcon fas icon='search' />}>
-                    <MDBInput id='form12Example1' label='Policy Number' />
-                </MDBInputGroup>
 
+                {/* Header ?*/}
+                
                 <MDBTable align='middle'>
                 <MDBTableHead>
                     <tr>
@@ -297,8 +296,9 @@ function Body()
                         <tr>
                             <td>
                                 <div className='d-flex align-items-center'>
+                                    {/* 'https://mdbootstrap.com/img/new/avatars/8.jpg' */}
                                 <img
-                                    src='https://mdbootstrap.com/img/new/avatars/8.jpg' 
+                                    src='https://cdn-icons-png.flaticon.com/128/149/149071.png'
                                     alt=''
                                     style={{ width: '45px', height: '45px' }}
                                     className='rounded-circle'
@@ -351,4 +351,4 @@ function Body()
     );
 }
 
-export default Body
+export default Table

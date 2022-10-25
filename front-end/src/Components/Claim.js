@@ -1,16 +1,16 @@
 import React, { useState } from "react"
 
 
-function Home ()
+function Claim ()
 {   
 
 
 
     return (
         <div>
-            <h1>Home Placeholder</h1>
+            <h1>Claims Placeholder</h1>
         </div>       
     )    
 };
 
-export default Home
+export default Claim

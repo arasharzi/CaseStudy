@@ -1,13 +1,16 @@
 import React from 'react'
+import { MDBFooter } from 'mdb-react-ui-kit'
+import { MDBContainer } from 'mdb-react-ui-kit'
 
 const Footer = () => 
 {
   return (
-    <footer>
-    <p>
-        Aliqua sit esse amet adipisicing nisi adipisicing quis ad nostrud do anim veniam.
-    </p>
-</footer>
+    <MDBFooter bgColor='light' className='text-center text-lg-left'>
+      <MDBContainer className='p-4'></MDBContainer>
+      <div className='text-center p-3' style={{ backgroundColor: 'rgba(0, 0, 0, 0.2)' }}>
+        &copy; {new Date().getFullYear()} {' '} SomeCorp
+      </div>
+    </MDBFooter>
   )
 }
 

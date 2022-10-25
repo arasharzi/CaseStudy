@@ -42,10 +42,16 @@ article p
 
 footer 
 {
+  /*
   background-color: #777;
   padding: 10px;
   text-align: center;
   color: white;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  */
   position: absolute;
   bottom: 0;
   left: 0;
@@ -75,7 +81,10 @@ padding-top: 10px;
   width:auto;
 }
 
-
+.link
+{
+  cursor: pointer;
+}
 
 
 
