@@ -86,6 +86,33 @@ padding-top: 10px;
   cursor: pointer;
 }
 
+.top-padding-30
+{
+  padding-top: 30px;
+  height: 100%;
+}
+
+.shadowbox-sm
+{
+  box-shadow: 2px 2px 6px grey;
+}
+
+.cards
+{
+  padding-top: 80px;
+  padding-bottom: 140px;
+  max-width: 340px;
+}
+
+.txt-shadow
+{
+  text-shadow: 2px 2px 4px black;
+}
+
+.width-max
+{
+  max-width: 100%;
+}
 
 
 @media (max-width: 600px)
