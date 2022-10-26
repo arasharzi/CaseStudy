@@ -14,6 +14,8 @@ public interface IPolicyHolderService
     String deletePolicyHolderById(int id);
     String deleteVehicleById(int policy_id, int vehicle_id);
 
+    PolicyHolder getPolicyHolderByPolicy(String policy_id);
+
 
 
 

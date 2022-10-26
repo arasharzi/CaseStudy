@@ -79,4 +79,24 @@ public class PolicyHolderService implements IPolicyHolderService
         }
         return "Vehicle not found";
     }
+
+    @Override
+    public PolicyHolder getPolicyHolderByPolicy(String policy_id)
+    {
+        List<PolicyHolder> records = this.policyHolderDAO.findAll();
+
+        for (PolicyHolder p : records)
+        {
+            for (Vehicle v : p.getVehicles())
+            {
+                if (v.getPolicy_number().equals(policy_id))
+                {
+                    return p;
+                }
+            }
+        }
+        return null;
+    }
+
+
 }

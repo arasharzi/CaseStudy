@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { MDBInput, MDBInputGroup, MDBIcon, MDBBadge, MDBBtn, MDBTable, MDBTableHead, MDBTableBody, 
+import { MDBInput, MDBBadge, MDBBtn, MDBTable, MDBTableHead, MDBTableBody, MDBCol, MDBRow,
     MDBModal, MDBModalDialog, MDBModalContent, MDBModalHeader, MDBModalTitle, MDBModalBody, MDBModalFooter } from 'mdb-react-ui-kit'
 import PolicyService from '../Services/PolicyService'
-import { MDBRow } from 'mdb-react-ui-kit'
-import { MDBCol } from 'mdb-react-ui-kit'
-
 
 function Table()
 {
@@ -101,7 +98,7 @@ function Table()
     }
 
     return (
-        <div>
+        <div id='table'>
             {/* MODAL */}
                 <MDBModal staticBackdrop tabIndex='-1' show={staticModal} setShow={setStaticModal}>
                     <MDBModalDialog size='lg'>
@@ -189,7 +186,7 @@ function Table()
                                         vehicles.map
                                         (
                                             vehicles =>
-                                            <tr>
+                                            <tr key={vehicles.policy_number}>
                                                 <td>
                                                     <p className='fw-bold mb-1'>{vehicles.policy_number}</p>
                                                 </td>
@@ -293,7 +290,7 @@ function Table()
                     policyHolders.map
                     (
                         policyHolders =>
-                        <tr>
+                        <tr key={policyHolders.policyholder_id}>
                             <td>
                                 <div className='d-flex align-items-center'>
                                     {/* 'https://mdbootstrap.com/img/new/avatars/8.jpg' */}

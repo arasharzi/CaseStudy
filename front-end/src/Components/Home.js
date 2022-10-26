@@ -5,13 +5,15 @@ import { MDBCarousel, MDBCarouselItem, MDBContainer, MDBRow, MDBCol, MDBCard, MD
 function Home ()
 {   
     return (
-        <div>
+        <div id='home'>
             <div className='justify-content-center top-padding-30'>
             <MDBContainer>
                 <MDBRow>
                     <MDBCol size='sm' />
                     <MDBCol size='md-10'>
-                        <MDBCarousel showControls fade className='shadowbox-sm'>
+                        <img src="https://mdbcdn.b-cdn.net/img/new/slides/041.webp" className="img-fluid rounded" alt="Wild Landscape" />
+                        {/*}
+                        <MDBCarousel showControls fade className='shadowbox-sm' wrap='false'>
                             <MDBCarouselItem
                                 className='w-100 d-block'
                                 itemId={1}
@@ -32,7 +34,6 @@ function Home ()
                                         <p className='txt-shadow'>Et labore reprehenderit anim labore consequat est adipisicing.</p>
                                     </div>                                
                             </MDBCarouselItem>
-
                             <MDBCarouselItem
                                 className='w-100 d-block'
                                 itemId={3}
@@ -42,8 +43,9 @@ function Home ()
                                         <h5 className='txt-shadow'>Even More SomeCorp News</h5>
                                         <p className='txt-shadow'>Ex consectetur anim magna ea velit velit.</p>
                                     </div>                                
-                            </MDBCarouselItem>
+                            </MDBCarouselItem> 
                         </MDBCarousel>
+                        */}
                     </MDBCol>
                     <MDBCol size='sm' />
                 </MDBRow>

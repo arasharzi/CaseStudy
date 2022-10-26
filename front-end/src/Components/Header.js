@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { MDBContainer, MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavbarItem, 
-  MDBNavbarLink, MDBCollapse, MDBIcon, MDBInputGroup, MDBBtn, MDBInput } from 'mdb-react-ui-kit';
+  MDBNavbarLink } from 'mdb-react-ui-kit';
 
 function Header({nav}) 
 {

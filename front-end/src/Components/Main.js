@@ -6,8 +6,6 @@ import Home from './Home'
 import Table from './Table'
 import Claim from './Claim'
 
-
-
 function Main ()
 {   
     const [home, setHome] = useState(true)
@@ -36,6 +34,7 @@ function Main ()
                 setTable(false)
                 setClaims(true)
                 setLogout(false)
+                
                 break
             case 'logout':
                 setHome(false)

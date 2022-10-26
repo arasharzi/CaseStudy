@@ -114,6 +114,49 @@ padding-top: 10px;
   max-width: 100%;
 }
 
+.width-70p
+{
+  width: 70%;
+}
+
+.bottom-padding-100
+{
+  padding-bottom: 100px;
+}
+
+.login-form-container
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.login-form
+{
+  width: 400px;
+  box-shadow: rgb(0 0 0 / 18%) 1px 1px 8px;
+  padding: 30px;
+  border-radius: 10px;
+}
+
+.login-form-title
+{
+  text-align: center;
+}
+
+.has-error
+{
+  border-color: rgba(255, 0, 0, 25%);
+  box-shadow: 0 0 0 0.25rem rgba(255, 0, 0, 25%);
+}
+
+.no-error
+{
+  border-color: rgba(0, 200, 0, 25%);
+  box-shadow: 0 0 0 0.25rem rgba(0, 200, 0, 25%);
+}
 
 @media (max-width: 600px)
 {
