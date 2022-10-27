@@ -26,9 +26,16 @@ function Claim ()
     const [vehicles, setVehicles] = useState([]) 
     const [claims, setClaims] = useState([])
 
-    const [vehicle, setVehicle] = useState()
+    const [vehicle, setVehicle] = useState(null)
     const [additionalNotes, setAdditionalNotes] = useState('')
     const [file, setFile] = useState()
+
+    const [policyNumber, setPolicyNumber] = useState('')
+    const [make, setMake] = useState('')
+    const [model, setModel] = useState('')
+    const [year, setYear] = useState('')
+
+
 
     const[search, setSearch] = useState('')
 
@@ -222,8 +229,36 @@ function Claim ()
                                                 <hr />
                                                 <div>Vehicle</div>
                                                 <MDBRow>
-                                                    {/* TODO */}
-                                                </MDBRow>                       
+                                                    <MDBCol>
+                                                        <MDBInput label={policyNumber} id='policy-number' type='text' aria-describedby='policy-number' 
+                                                            disabled={disabled} autoComplete='off' />
+                                                        <div id='policy-number' className='form-text'>
+                                                            Policy Number
+                                                        </div>
+                                                    </MDBCol>
+                                                    <MDBCol>
+                                                        <MDBInput label={make} id='make' type='text' aria-describedby='make' 
+                                                            disabled={disabled} autoComplete='off' />
+                                                        <div id='make' className='form-text'>
+                                                            Make
+                                                        </div>
+                                                    </MDBCol>
+                                                    <MDBCol>
+                                                        <MDBInput label={model} id='model' type='text' aria-describedby='model' 
+                                                            disabled={disabled} autoComplete='off' />
+                                                            <div id='model' className='form-text'>
+                                                                Model
+                                                            </div>
+                                                    </MDBCol>
+                                                    <MDBCol>
+                                                        <MDBInput label={year} id='year' type='text' aria-describedby='year' 
+                                                            disabled={disabled} autoComplete='off' />
+                                                            <div id='year' className='form-text'>
+                                                                Year
+                                                            </div>
+                                                    </MDBCol>
+                                                </MDBRow> 
+                                                                      
                                                 <hr />
                                                 <div>Claims</div>
                                                 <MDBTable align='middle' className='width-70p'>
@@ -408,6 +443,12 @@ function Claim ()
                                                         setClaims(vehicles.claims)
                                                         setFile(null)
                                                         setVehicle(vehicles)
+
+                                                        setPolicyNumber(vehicles.policy_number)
+                                                        setMake(vehicles.make)
+                                                        setModel(vehicles.model)
+                                                        setYear(vehicles.year)
+
                                                         toggleShow()
                                                     }}> {/* colors= success=green, primary=blue, warning=yellow danger=red */}
                                                     Add Claim
