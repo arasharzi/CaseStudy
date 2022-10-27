@@ -19,7 +19,6 @@ public class Vehicle
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Claim> claims;
 
-
     public Vehicle()
     {
 

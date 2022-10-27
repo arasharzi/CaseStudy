@@ -5,6 +5,7 @@ import { MDBTabs, MDBTabsItem, MDBTabsLink, MDBTabsContent, MDBTabsPane, MDBRow,
     MDBAccordion, MDBAccordionItem, MDBFile } from 'mdb-react-ui-kit'
 import PolicyService from "../Services/PolicyService"
 import JSZip from 'jszip'
+import download from "downloadjs"
 
 
 function Claim ()
@@ -25,6 +26,7 @@ function Claim ()
     const [vehicles, setVehicles] = useState([]) 
     const [claims, setClaims] = useState([])
 
+    const [vehicle, setVehicle] = useState()
     const [additionalNotes, setAdditionalNotes] = useState('')
     const [file, setFile] = useState()
 
@@ -90,10 +92,9 @@ function Claim ()
         if (additionalNotes.trim() !== '' && file !== null)
         {
             var zip = new JSZip()
-            console.log(additionalNotes)
             zip.file(file[0].name, file[0])
             zip.file('note.txt', additionalNotes)
-            zip.generateAsync({type: 'blob'})
+            zip.generateAsync({type: 'base64'})
                 .then(content =>
                     {                        
                         setClaims(claims.concat(
@@ -103,18 +104,19 @@ function Claim ()
                                 "closed": false,
                                 "claimApproved": false,
                             }))
-                        console.log(content)
                     })                    
         }
     }
 
     function updateClaims()
     {   
-
-
+         policyHolder.vehicles[vehicles.indexOf(vehicle)].claims = claims
+         PolicyService.updatePolicyHolder(policyHolder, vehicles)
          setDisableAdditionalClaims(false)
          setAdditionalNotes('')
          document.getElementById('customFile').value = ''
+         console.log(policyHolder)
+         toggleShow()
     }
 
 
@@ -248,16 +250,13 @@ function Claim ()
                                                                 <MDBBtn size='sm' color='danger' rounded className='mx-2' onClick={()=>
                                                                     {
                                                                         if (claims.data !== null)
-                                                                        {                                                                            
-                                                                            var element = document.createElement('a')
-                                                                            element.href = URL.createObjectURL(claims.data)
-                                                                            element.download = 'claims-data.zip'
-                                                                            document.body.appendChild(element)
-                                                                            element.click()
-                                                                        }
-                                                                        else
-                                                                        {
-                                                                            alert('no attached documents') //TODO: change to a toast or disable button but shouldnt occur doc is required
+                                                                        {                                                                                                                
+                                                                            // var element = document.createElement('a')
+                                                                            // element.href = URL.createObjectURL( claims.data)
+                                                                            // element.download = 'claims-data.zip'
+                                                                            // document.body.appendChild(element)
+                                                                            // element.click()
+                                                                            download('data:application/zip;base64,'+claims.data, 'claims-data.zip', 'application/zip')
                                                                         }
                                                                     }}> {/* colors= success=green, primary=blue, warning=yellow danger=red */}
                                                                     Download
@@ -278,7 +277,7 @@ function Claim ()
                                                         <MDBBtn color='link' rounded size='sm' disabled={disableAdditionalClaims} onClick={() => 
                                                         {
                                                             setDisableAdditionalClaims(true)
-                                                            addClaim()
+                                                            addClaim()                                                            
                                                         }}>
                                                             Add Claim 
                                                         </MDBBtn>
@@ -408,6 +407,7 @@ function Claim ()
                                                     {
                                                         setClaims(vehicles.claims)
                                                         setFile(null)
+                                                        setVehicle(vehicles)
                                                         toggleShow()
                                                     }}> {/* colors= success=green, primary=blue, warning=yellow danger=red */}
                                                     Add Claim

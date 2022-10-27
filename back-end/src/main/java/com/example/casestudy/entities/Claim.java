@@ -19,10 +19,13 @@ public class Claim
     {
 
     }
-    public Claim(int id, byte[] data)
+    public Claim(int id, byte[] data, String extension, boolean isClaimApproved, boolean isClosed)
     {
         this.id = id;
         this.data = data;
+        this.extension = extension;
+        this.isClaimApproved = isClaimApproved;
+        this.isClosed = isClosed;
     }
 
     public int getId()
