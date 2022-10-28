@@ -31,6 +31,11 @@ class PolicyService
 
     }
 
+    addPolicyHolder()
+    {
+        
+    }
+
     getPolicyHolder(id)
     {
         return axios.get(POLICY_REST_API_URL + id);
@@ -41,14 +46,14 @@ class PolicyService
         return axios.get(POLICY_REST_API_URL + 'policy/' + policy);
     }
 
-    addPolicyHolder()
-    {
-        
-    }
-
     deleteVehicleById(policyHolder, vehicle_id)
     {
         return axios.delete(POLICY_REST_API_URL + policyHolder.policyholder_id + '/' + vehicle_id);
+    }
+
+    getActiveClaims()
+    {
+        return axios.get(POLICY_REST_API_URL + 'active-claims')
     }
 
 }

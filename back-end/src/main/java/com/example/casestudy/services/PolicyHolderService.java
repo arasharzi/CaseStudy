@@ -2,10 +2,12 @@ package com.example.casestudy.services;
 
 import com.example.casestudy.entities.PolicyHolder;
 import com.example.casestudy.entities.Vehicle;
+import com.example.casestudy.entities.Claim;
 import com.example.casestudy.repository.PolicyHolderDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Optional;
@@ -24,7 +26,7 @@ public class PolicyHolderService implements IPolicyHolderService
     }
 
     @Override
-    public PolicyHolder getPolicyHolderById(int id)
+    public PolicyHolder getPolicyHolderById(int id) //TODO: Bug where it's repeating vehicles x times where x is number of claims on vehicle
     {
         Optional<PolicyHolder> policyHolder = this.policyHolderDAO.findById(id);
         PolicyHolder record = null;
@@ -96,6 +98,28 @@ public class PolicyHolderService implements IPolicyHolderService
             }
         }
         return null;
+    }
+
+    @Override
+    public List<PolicyHolder> getActiveClaims()
+    {
+        List<PolicyHolder> records = this.policyHolderDAO.findAll();
+        List<PolicyHolder> result = new ArrayList<>();
+
+        for (PolicyHolder p : records)
+        {
+            for (Vehicle v : p.getVehicles())
+            {
+                for (Claim c : v.getClaims())
+                {
+                    if (!c.isClosed() && !result.contains(p))
+                    {
+                        result.add(p);
+                    }
+                }
+            }
+        }
+        return result;
     }
 
 

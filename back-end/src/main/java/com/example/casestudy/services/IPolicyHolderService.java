@@ -15,6 +15,7 @@ public interface IPolicyHolderService
     String deleteVehicleById(int policy_id, int vehicle_id);
 
     PolicyHolder getPolicyHolderByPolicy(String policy_id);
+    List<PolicyHolder> getActiveClaims();
 
 
 

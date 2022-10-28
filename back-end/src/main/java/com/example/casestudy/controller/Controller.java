@@ -34,13 +34,26 @@ public class Controller
         return this.policyHolder.getPolicyHolderById(Integer.parseInt(id));
     }
 
+    @GetMapping("policy-holders/policy/{id}")
+    public PolicyHolder getPolicyHolderByPolicy(@PathVariable String id)
+    {
+        return this.policyHolder.getPolicyHolderByPolicy(id);
+    }
+
+    @GetMapping("policy-holders/active-claims")
+    public List<PolicyHolder> getActiveClaims()
+    {
+        return this.policyHolder.getActiveClaims();
+    }
+
+
     // Adds
     @PostMapping("/policy-holders")
     public PolicyHolder addPolicyHolder(@RequestBody PolicyHolder policyHolder)
     {
         return this.policyHolder.addPolicyHolder(policyHolder);
     }
-    // TODO: add vehicle to policy holder?
+
 
     // Updates
     @PutMapping("/policy-holders")
@@ -48,7 +61,7 @@ public class Controller
     {
         return this.policyHolder.updatePolicyHolder(policyHolder);
     }
-    // TODO: update vehicle info for policy holder
+
 
     // Deletes
     @DeleteMapping("/policy-holders/{id}")
@@ -62,31 +75,4 @@ public class Controller
     {
         return this.policyHolder.deleteVehicleById(Integer.parseInt(id), Integer.parseInt(vehicle_id));
     }
-
-    // TODO: add mapping to get information by policy number
-    @GetMapping("policy-holders/policy/{id}")
-    public PolicyHolder getPolicyHolderByPolicy(@PathVariable String id)
-    {
-        return this.policyHolder.getPolicyHolderByPolicy(id);
-    }
-
-
-
-
-    // Mapping for file handling
-    // Gets
-    @GetMapping("/policy-holder/{id}/files")
-    public String getPolicyHolderClaim()
-    {
-        return "";
-    }
-
-    // Adds
-    @PostMapping("/policy-holders/{id}/files")
-    public String uploadPolicyHolderClaim()
-    {
-        return "";
-    }
-
-
 }

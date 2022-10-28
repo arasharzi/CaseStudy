@@ -6,6 +6,7 @@ import { MDBTabs, MDBTabsItem, MDBTabsLink, MDBTabsContent, MDBTabsPane, MDBRow,
 import PolicyService from "../Services/PolicyService"
 import JSZip from 'jszip'
 import download from "downloadjs"
+import ActiveClaims from "./ActiveClaims"
 
 
 function Claim ()
@@ -147,13 +148,11 @@ function Claim ()
                 <MDBCol size='9'>
                     <MDBTabsContent>
                         <MDBTabsPane show={verticalActive === 'active-claims'}>
-                            <h1>Active Claims</h1>
-                            <p>
-                                search through claims? bring up info about the claim the files associated with the claim
-                                then be able to approve or deny the claim?                                 
-                                maybe this should have a table of all active claims the policy holder and vehicle associated with that claim?                                    
-                                adding a new claim should maybe be in the policy holders location?                 
-                            </p>
+
+                            {/* START ACTIVE CLAIMS */}
+                                <ActiveClaims />
+                            {/* END ACTIVE CLAIMS */}
+
                         </MDBTabsPane>
                         <MDBTabsPane show={verticalActive === 'new-claim'}>
 
@@ -331,11 +330,10 @@ function Claim ()
                                 </MDBModalDialog>
                             </MDBModal>
                             {/* END CLAIM MODEL */}
-
+                            
+                            {/* START CLAIMS */}
                             <h1>New Claim</h1>
-                            <p />
-
-                            {/* START */}
+                            <p />                            
                             <MDBInputGroup  className='d-flex w-auto mb-3 justify-content-end' noBorder 
                                 textBefore={<MDBIcon fas icon='search' />}>
                                 <form className='d-flex w-auto mb-3 justify-content-end'>
@@ -459,7 +457,7 @@ function Claim ()
                                 }                                                                        
                                 </MDBTableBody>
                             </MDBTable>
-                            {/* END */}
+                            {/* END CLAIMS */}
 
                         </MDBTabsPane>
                     </MDBTabsContent>
