@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import { MDBBtn, MDBTable, MDBTableHead, MDBTableBody, MDBIcon, MDBInputGroup } from 'mdb-react-ui-kit'
 import download from "downloadjs"
 import PolicyService from "../Services/PolicyService"

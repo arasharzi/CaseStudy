@@ -25,8 +25,9 @@ public class PolicyHolderService implements IPolicyHolderService
         return this.policyHolderDAO.findAll();
     }
 
+    // TODO: Bug where it's repeating vehicles x times where x is number of claims on vehicle, this function is currently in use.
     @Override
-    public PolicyHolder getPolicyHolderById(int id) //TODO: Bug where it's repeating vehicles x times where x is number of claims on vehicle
+    public PolicyHolder getPolicyHolderById(int id)
     {
         Optional<PolicyHolder> policyHolder = this.policyHolderDAO.findById(id);
         PolicyHolder record = null;

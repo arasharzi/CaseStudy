@@ -35,6 +35,7 @@ function Table()
     {
         PolicyService.getPolicyHolders()
             .then((Response) => setPolicyHolders(Response.data)) 
+            .catch((error) =>{})
     }, [])
 
     function updateVehicles()

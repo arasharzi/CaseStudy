@@ -16,12 +16,6 @@ public class Controller
     private IPolicyHolderService policyHolder;
 
     // Gets
-    @GetMapping("/")
-    public String homePage()
-    {
-        return null;
-    }
-
     @GetMapping("/policy-holders")
     public List<PolicyHolder> getAllPolicyHolders()
     {
@@ -34,13 +28,13 @@ public class Controller
         return this.policyHolder.getPolicyHolderById(Integer.parseInt(id));
     }
 
-    @GetMapping("policy-holders/policy/{id}")
+    @GetMapping("/policy-holders/policy/{id}")
     public PolicyHolder getPolicyHolderByPolicy(@PathVariable String id)
     {
         return this.policyHolder.getPolicyHolderByPolicy(id);
     }
 
-    @GetMapping("policy-holders/active-claims")
+    @GetMapping("/policy-holders/active-claims")
     public List<PolicyHolder> getActiveClaims()
     {
         return this.policyHolder.getActiveClaims();
@@ -70,9 +64,19 @@ public class Controller
         return this.policyHolder.deletePolicyHolderById(Integer.parseInt(id));
     }
 
-    @DeleteMapping("policy-holders/{id}/{vehicle_id}")
+    @DeleteMapping("/policy-holders/{id}/{vehicle_id}")
     public String deleteVehicle(@PathVariable String id, @PathVariable String vehicle_id)
     {
         return this.policyHolder.deleteVehicleById(Integer.parseInt(id), Integer.parseInt(vehicle_id));
     }
+
+
+    // Login
+    @GetMapping("/auth")
+    public String login()
+    {
+        System.out.println("login attempted");
+        return "OK";
+    }
+
 }

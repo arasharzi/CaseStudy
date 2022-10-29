@@ -1,14 +1,10 @@
 import React, { useState } from "react"
-//import { useUser } from "../UserProvider"
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
-//import Cookies from "js-cookie";
+import PolicyService from "../Services/PolicyService";
 
-const AUTH_API_URL = "http://localhost:8080/api/auth/";
 
 function Login ()
 {   
-//    const user = useUser();
     const navigate = useNavigate();
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState(''); 
@@ -109,37 +105,24 @@ function Login ()
     function sendLogin(e)
     {
         e.preventDefault();
-        var data = JSON.stringify(
+        PolicyService.login(username, password)
+            .then((response) =>
             {
-                'username': username,
-                'password': password
-            });
-        var config =
-        {
-            method: 'post',
-            url: AUTH_API_URL + 'login',
-            withCredentials: true,                  //sets jwt cookie not sure i like it.
-            headers:
+                console.log(response)
+                if (response.status === 200)
+                {   
+                    navigate("/home")
+                }
+            })
+            .catch((error) =>
             {
-                'Content-Type': 'application/json'
-            },
-            data : data
-        };
-/*
-        axios(config)
-        .then(function (response) 
-        {
-           user.setJwt(Cookies.get("jwt"));
-           console.log(user.jwt);
+                console.log(error)
+                if (error.status === 401)
+                {
 
-        }, [user.jwt]).finally(function (response)
-        {
-            if(user.jwt)
-            {
-                navigate("/profile");
-            }
-        });  
-*/ 
+                }
+                // login error popup?
+            })
     }
     return (
         <div className="login-form-container">

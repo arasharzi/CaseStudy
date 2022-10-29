@@ -13,7 +13,7 @@ function Main ()
     const [claims, setClaims] = useState(false)
     const [logout, setLogout] = useState(false)
 
-    function nav(n)
+     function nav(n)
     {
         switch(n)
         {
