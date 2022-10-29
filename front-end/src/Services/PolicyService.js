@@ -61,10 +61,6 @@ class PolicyService
             {
                 withCredentials: true,
                 Authorization: token
-                // headers:
-                // {
-                //     'Authorization': token, 
-                // }
             })
     }
 
