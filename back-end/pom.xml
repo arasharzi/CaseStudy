@@ -14,7 +14,7 @@
 	<name>casestudy</name>
 	<description>case study project</description>
 	<properties>
-		<java.version>17</java.version>
+		<!-- <java.version>17</java.version> -->
 		<spring.security.version>4.0.2.RELEASE</spring.security.version>
 	</properties>
 	<dependencies>
